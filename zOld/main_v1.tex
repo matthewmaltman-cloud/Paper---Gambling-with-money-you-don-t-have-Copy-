@@ -1,0 +1,356 @@
+\documentclass[11pt]{article}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{setspace}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{booktabs}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage[pdftex,colorlinks=true]{hyperref}
+\usepackage[format=hang,labelfont=bf]{caption}
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{adjustbox}
+\usepackage{threeparttable}
+\usepackage[round]{natbib}
+\usepackage{times}
+\pagestyle{plain}
+\hypersetup{colorlinks, citecolor=blue, linkcolor=red, urlcolor=Violet}
+\setlength{\textheight}{8.5in} \setlength{\textwidth}{6.3in}
+\setlength{\oddsidemargin}{0.2in} \setlength{\topmargin}{0.0in}
+\setlength{\parindent}{0pt}
+\onehalfspacing
+\defcitealias{RegulationUseFinancialServicesOnlineGamblingAus}{PJCCFS, 2021}
+
+\newcommand{\MM}[1]{\textcolor{violet}{[MM: #1]}}
+\newcommand{\AM}[1]{\textcolor{teal}{[AM: #1]}}
+
+% ============================================================
+% INSIGHTS-FORMAT VERSION 2
+% Target: <= 6,000 words (main text + footnotes), 5 exhibits.
+% Framing: friction-based regulation of temptation goods and its
+% incidence, argued as a sequential decomposition; model appears in
+% Section 7 to reconcile the evidence, per MM.
+% Exhibits unchanged from v1:
+%   Fig 1: raw data (f5_raw_data)
+%   Fig 2: pre-ban incidence, 4 panels [combine f1/f2/f3/f4 -> see TODO]
+%   Fig 3: baseline event studies (f6_DiD_baseline)
+%   Fig 4: mechanisms, 3 panels [combine f9/f7/fA16 -> see TODO]
+%   Tab 1: predictors of stopping
+%
+% TITLE OPTIONS (current kept; alternatives below):
+%   "Sand in the Wheels of Sin: Payment Frictions and Online Gambling"
+%   "Screening by Devotion: The Incidence of Friction-Based Gambling Regulation"
+% ============================================================
+
+\title{Gambling With Money You Don't Have:\\Credit Cards, Frictions, and Online Sports Betting}
+\author{Aditya Maitra\footnote{e61 Institute} \and Matthew Maltman\footnote{e61 Institute \& Kenneth C. Griffin Department of Economics, University of Chicago. Corresponding author: maltmanm@uchicago.edu}}
+\date{November 2025}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+\noindent Governments increasingly regulate gambling with small procedural frictions rather than prices or quantities. Using bank transaction data, we evaluate one such policy, Australia's 2024 ban on credit cards for online wagering. The ban reduced gambling, cutting participation among affected individuals by 10 to 15 per cent, but the response was self-selecting: the third of affected gamblers who quit were small, financially secure bettors, while intensive gamblers switched funding sources and continued. A simple model of payment choice reconciles the evidence and shows why frictions, unlike ordeals in transfer programs, screen out the users regulators worry about least.
+\end{abstract}
+% TODO: abstract is 97 words on my count; AERI cap is 100. Re-count after any edit.
+
+\vspace{0.1in} \noindent
+\textbf{JEL Codes: D14, D91, G18, H23.} \quad
+\textbf{Keywords: Sports Betting, Gambling, Frictions, Household Finance, Targeting.}
+
+\newpage
+
+\section{Introduction}
+
+Governments regulate temptation goods with three broad instruments: prices, through sin taxes; quantities, through limits and prohibitions; and, increasingly, frictions, small procedural obstacles placed between the consumer and the good. In gambling, frictions have become the instrument of choice. The United Kingdom banned credit cards for all gambling in 2020, several US states prohibit credit card deposits into betting accounts, and Australia extended its long-standing in-person ban to online wagering in 2024.\footnote{The UK ban took effect on 14 April 2020 \citep{GamblingCommission2020_CreditCardBan}. % TODO: add citations for US state prohibitions, e.g. Iowa, Massachusetts, Tennessee statutes or regulator rules.
+} Payment restrictions are politically attractive: they are cheap to legislate, easy to enforce through firms, and leave the good itself legal. But how they affect behaviour, and for whom, is ambiguous in theory and untested in practice. Unlike taxes, whose incidence follows elasticities, a friction binds only on consumers who cannot or will not step around it. Its incidence is self-selecting, and nothing guarantees the selection lands on the consumers the policy is aimed at.
+
+We provide causal, transaction-level evidence on both questions from Australia's reform, which prohibited credit card deposits into online sports betting accounts from June 2024. The stated rationale was that credit access enables gambling that liquid funds would otherwise constrain, while exposing consumers to debt. Announcing the ban, the responsible minister argued that ``people should not be betting with money they don't have'' \citep{Rowland_credit_cards_ban_2024}. Australia is an ideal laboratory for studying gambling policy: Australians lose more to gambling per capita than any other population \citep{Peake2025_biggest_losers}, sports betting has been legal since 1983, and online wagering has been federally regulated since 2001. Ours is a mature market near its long-run equilibrium, so the responses we measure come from established consumers rather than from a market still adjusting to legalisation.
+
+We observe consented, de-identified bank transaction data linking each individual's credit cards, transaction accounts, and payments through intermediaries. We see the funding source behind every wagering deposit, and we see substitution across funding sources when one is removed. Our design compares gamblers who funded sports bets with a credit card before the ban to gamblers who wagered from transaction accounts, using event-study difference-in-differences specifications across a range of outcomes related to sports betting, liquidity, and consumption.
+
+We first establish who the policy affected. Credit cards funded a small and shrinking share of online wagering - around 8 per cent of expenditure in our data in 2019 and just 2 per cent by early 2024 - and the gamblers who used them looked very different from the policy narrative: they had higher incomes and more liquid wealth than other gamblers, were no more likely to revolve card balances or face liquidity constraints, and mostly funded their wagering from transaction accounts anyway.
+
+We then trace what the ban did. Most treated gamblers simply switched from credit cards to transaction accounts, but the substitution was incomplete. Total gambling among treated gamblers fell by around \$50 per fortnight: credit-card-funded wagering fell by roughly \$100 per fortnight, and a \$50 rise in transaction-account-funded wagering replaced only half of that decline. The entire decline occurred on the extensive margin, with the probability of gambling in a given fortnight falling by 10 to 15 per cent. Spending conditional on participating was unchanged, uniformly across the gambling, income, liquidity, and debt distributions. The 38 per cent of affected gamblers who stopped altogether drove the whole participation decline; those who switched funding sources continued to gamble at the same rate.
+
+Convenience frictions, rather than liquidity, appear to drive stopping and therefore the entire effect of the policy. Two pre-ban characteristics predict stopping: betting at low intensity, and relying on the credit card as the sole funding source. By contrast, none of the financial characteristics we observe, including liquidity constraints, income, or credit-card revolving status, predicts stopping, and almost all heavy gamblers continued to wager after the ban. Nor does a borrowing mechanism fit the residual evidence. Liquidity-constrained gamblers retained a simple workaround, transferring funds from a credit card to a transaction account before depositing, yet cash-advance activity collapsed rather than persisted, and neither stoppers nor switchers saw any improvement in balances or debt.
+
+The evidence instead suggests that many gamblers used credit cards because they were the most convenient way to fund wagering. This interpretation is reinforced by an unusual institutional feature of the Australian market: before the reform, many banks charged fees for credit-card gambling transactions. We estimate that these fees fell by around \$4 per fortnight after the ban, implying that many gamblers had previously been willing to incur a direct monetary cost for the convenience of using a credit card.
+% TODO: standardise the participation effect (earlier drafts alternated between ~10 and 10-15 per cent). Pin the number and use it everywhere.
+
+In Section \ref{Framework}, we develop a simple model of payment choice that reconciles our empirical findings. The model nests both mechanisms and shows the data reject the borrowing channel on every margin it touches. The ban instead operated as a one-off switching cost: a gambler exits the market when the cost of re-registering exceeds the value of continuing.
+
+Two general lessons follow. The first is that small frictions can be a powerful lever on participation. Here, the monetary equivalent was only a few dollars per fortnight - the avoided cash-advance fee - yet it reduced participation by double digits among experienced consumers of an addictive good. The second is that the incidence of a friction depends on who bears it and who can avoid it. In our setting, both margins selected away from harm. Because willingness to incur a switching cost rises with attachment to gambling, the friction disproportionately screened out the least attached gamblers while leaving the heaviest users largely unaffected. And because access to the banned payment technology was itself credit-screened, those exposed to the friction were, on average, financially healthier than other gamblers.
+
+The result is a form of targeting by ordeal in reverse. Ordeals can improve the targeting of transfers because willingness to endure them rises with need \citep{NicholsZeckhauser1982, AlatasEtAl2016_SelfTargeting}; for temptation goods, willingness to endure rises with exactly the intensity of use the planner wants to curb. Frictions trim the casual edge of a market and cannot reach its core.
+
+We contribute to three literatures. A growing body of work measures gambling in bank transaction records and documents strong associations between gambling intensity and financial difficulty \citep{MuggletonEtAl2021_BigFinancialData, MarionneauEtAl2023_IndebtedBankTransactions, ZendleNewall2024_OpenBankingGambling}, and quasi-experimental studies of US legalisation find that expanding access worsens household finances \citep{HollenbeckEtAl2025_FinancialConsequences, BakerEtAl2024_GamblingAwayStability}. We study the reverse experiment, an attempted contraction of access in an already mature market. Second, we speak to behavioural public economics on corrective policy for temptation goods, which has focused on taxes \citep{AllcottLockwoodTaubinsky2019} and on ordeals as targeting devices \citep{NicholsZeckhauser1982, DeshpandeLi2019_ScreenedOut, Thaler2018_Sludge}; we provide, to our knowledge, the first causal evidence on the incidence of a friction aimed at a sin good. Third, our pre-ban facts add to household finance evidence that avoidable fee-paying concentrates among higher-income consumers \citep{GrahamMcDowall2024_MentalAccounts, NBERw31613, Jorring2023_PaymentChoice}; the ban mechanically eliminated such a fee, letting us observe the value of convenience or inattentiveness.
+
+\section{The Ban and the Data} \label{Setting}
+
+\subsection{Policy background}
+
+Credit cards have been prohibited for in-person gambling in Australia since 2006, but online wagering, regulated federally since 2001, remained exempt. As online sports betting and its advertising grew, parliamentary inquiries recommended aligning the two regimes while acknowledging that evidence on the prevalence and harm of card-funded gambling was thin \citepalias{RegulationUseFinancialServicesOnlineGamblingAus}. On 7 December 2023 the Australian Federal Government announced the ban, which then took effect on 11 June 2024. The policy places the compliance burden on wagering firms, which must block deposits originating from credit cards, including card-funded deposits routed through digital wallets such as PayPal. Online lotteries were exempt. Firms complied completely and immediately: card-funded sports betting in our data falls to zero at the effective date (Figure \ref{rawdata}).
+
+Two conceptual channels could make such a ban bite. If gamblers used cards to borrow, the ban removes a credit line and should compress the spending of the liquidity constrained. If gamblers used cards for convenience, the ban imposes a switching friction and should remove weakly attached participants while leaving continuers unchanged. In addition, Australia had a unique institutional detail: prior to the policy, Australian banks treated gambling deposits from credit cards as ``cash advances'', which attract fees of around 3 per cent of the transaction or a fixed \$3, and incur interest immediately. Before the ban, a credit card was therefore the strictly more expensive way to fund betting, particularly for gamblers who deposited regularly.
+
+\subsection{Data}
+We use consented, de-identified bank transaction data that a third-party provider collects during routine consumer finance applications (mortgages, credit cards, buy-now-pay-later services, personal finance apps, and utility switching). The data provide a backwards-looking window of financial history: typically 90 days of transactions across all linked accounts, covering spending, income, and balances on transaction, savings, and credit card products. The provider cleans the data before we access them, categorising transactions and removing personally identifiable information. A key strength of the dataset is that it links information across account types, allowing us to identify the funding source behind every wagering deposit and to examine how activity shifts between accounts following the policy change. To ensure accurate classification, we exclude individuals without an observed credit card but with evidence of credit card use, for example card repayments made from the transaction account.
+
+We measure gambling activity as deposits into sports betting accounts, which we identify from merchant codes and verify against all major operators. We focus on sports betting because it is the primary form of online gambling. The dataset does not capture bets funded from existing balances or winnings that remain in betting accounts, so deposits track spending rather than losses; nor can we observe in-person betting, which Australians conduct mostly in cash. Deposits through digital wallets require one clarification: when an individual deposits through PayPal, they initiate the payment in the wallet but the funds come from their linked account, so the activity appears in our data as a sports betting transaction from that account and our analysis captures it. The ban also prohibited card-funded deposits routed this way. Only gambling funded from a balance already sitting in a wallet escapes us, and Section \ref{Results} shows wallet deposits themselves do not respond to the ban. We measure income as regular, identifiable wage or income-support inflows and expenditure as outlays on services and non-durables, excluding durables to avoid lumpy purchases. We define an individual as liquidity constrained if their transaction account balance falls below \$100 at any point in the pre-period, and as a revolver if their outstanding credit card debt never falls below \$100.
+
+The sample skews younger and likely more liquidity-constrained than the general population, as we would expect from its consumer-finance origin. It is not clear which direction this bias acts in: more problematic gambling behaviour may concentrate among liquidity-constrained people, but those with the most problematic habits may never appear in a finance application at all. Other research finds that transaction data of this type co-move closely with official statistics on aggregate consumption, mitigating these concerns. A lack of available data makes it challenging to benchmark our card-share estimates against public sources. Industry submissions put the credit card share of wagering deposits at approximately 20 per cent in the late 2010s \citep{AustralianBankingAssociation2020UseCreditCardsGambling}, and TAB's chief executive reported a 14 per cent share in 2021, down from 15.7 per cent the previous year \citepalias{RegulationUseFinancialServicesOnlineGamblingAus}. Two things explain the gap: credit card use, in general and for gambling, has fallen over time and our window is later; and the rate of card holding in our sample sits below the general population's. Conditional on holding a card, the share of gambling funded by card in our data is closer to the industry estimates (Online Appendix). This lower card-holding rate is not a threat to internal validity: provided the card holders we observe are not systematically different from those we do not observe, the policy response we estimate is representative of card gamblers across the Australian population.
+
+
+
+\section{Do credit cards drive gambling harms?} \label{Incidence}
+
+Credit cards represented only a minority, and a declining share, of the online sports betting market before the policy (Figure \ref{incidence}). In our data they funded 8 per cent of sports betting expenditure in late 2019, declining steadily to roughly 2 per cent in the months preceding the ban (Panel A). This mirrors broader falls in credit card use in Australia, particularly among younger cohorts, and matches industry testimony of a falling share in 2021 \citepalias{RegulationUseFinancialServicesOnlineGamblingAus}. By early 2024, only 2 per cent of cardholders recorded any gambling from their card, and less than 10 per cent of card holders' gambling expenditure came from it. Any harms associated with credit card gambling were therefore already diminishing before the reform, although perhaps not zero.\footnote{The share of 25 to 34 year olds holding a credit card fell from 53 per cent in 2010 to 28 per cent in 2023. The only Australian survey to ask directly found 0.8 per cent of respondents reporting increased credit card debt from gambling in 2024 \citep{RockloffRussellBrowneHing2025}. In the HILDA survey, credit card ownership correlates positively with sports betting spending but negatively with problem gambling.}
+
+Accounts using a credit card for sports gambling on average gambled more per week and carried more outstanding debt than other groups (Panel B), but these gaps reflect capacity rather than distress. Card gamblers had higher incomes and more liquid wealth than their counterparts, were no more likely to revolve their credit card debt or to be liquidity constrained, and funded a relatively large share of their weekly gambling from their transaction accounts anyway (Panel C). None of this is surprising: a credit card in Australia is a screened product, issued only after a bank has conducted checks on financial health. The financially secure disproportionately held the technology the ban removed.
+
+Nor does the right tail of gambling appear driven by credit card use. Gambling among card users is heavily right-skewed, ranging from roughly \$10 per week in the lowest quartile to \$600 in the highest, yet even in the highest quartile most gambling expenditure originated from transaction accounts rather than credit cards, and measures of liquidity constraint and debt revolving show no clear differences across the distribution (Panel D). It therefore seems unlikely that access to short-term debt was driving large gambling expenditures. We cannot directly identify problem gambling in the data, since survey instruments define it, and these averages do not rule out that some people within the group were exposed to financial harm from gambling. But the average card gambler was not in financial stress or debt due to their gambling, and credit cards served this group as a means of convenience as much as a means of credit provision.
+
+\begin{figure}[H]
+    \centering
+    \caption{Credit cards and sports betting before the ban}
+    % TODO: current standalone charts dropped in as panels for now; recombine into a
+    % single properly typeset 4-panel figure before submission, with notes carrying the
+    % $100 constraint/revolver definitions and a shared group legend.
+    \begin{subfigure}{0.49\textwidth}
+        \includegraphics[width=\textwidth]{Figures/f1_timeseries_card_use.pdf}
+        \caption{Card share of wagering over time}
+    \end{subfigure}
+    \begin{subfigure}{0.49\textwidth}
+        \includegraphics[width=\textwidth]{Figures/f2_gambling_creditdebt.pdf}
+        \caption{Gambling and card debt across groups}
+    \end{subfigure}
+    \begin{subfigure}{0.49\textwidth}
+        \includegraphics[width=\textwidth]{Figures/f3_income_wealth_lq.pdf}
+        \caption{Income, liquid wealth, and constraints}
+    \end{subfigure}
+    \begin{subfigure}{0.49\textwidth}
+        \includegraphics[width=\textwidth]{Figures/f4_gambling_right_skew.pdf}
+        \caption{Outcomes across the card-gambler distribution}
+    \end{subfigure}
+    \label{incidence}
+\end{figure}
+
+\section{Empirical Design} \label{Methodology}
+
+We build a balanced fortnightly panel over a 20-week window spanning 4 April to 14 August in both 2023 and 2024, keeping individuals observed in each of the six weeks either side of the policy date, with at least one wage inflow per month, five expenditure outflows per month, and a sports gambling transaction before 11 June 2024. Our data are at the individual transaction level, but we aggregate to fortnightly to smooth idiosyncratic pay and betting cycles. Our results are robust to weekly frequency and to balanced windows of 4, 8, and 12 weeks around the treatment date (Online Appendix). The rolling structure of the data caps the horizon: we observe accounts for roughly 90 days on average, so beyond 12 weeks attrition dominates and the treated group shrinks.
+
+We define treatment by pre-ban behaviour: individuals who funded sports gambling with a credit card at least once in 2024. We use two control groups: 2024 transaction-account gamblers, who held no credit card and were unaffected by the policy, controlling within-year for the sporting calendar; and 2023 credit card gamblers over the same calendar window, controlling across years for the behaviour of card gamblers absent the policy. Our baseline event-study specification is
+\begin{equation}
+    y_{it} = \alpha_i + \gamma_t + \textstyle\sum_t \beta_t \, (\text{Treat}_i \times F_t) + \epsilon_{it},
+\end{equation}
+with individual and period fixed effects, where outcomes are fortnightly sports gambling expenditure, an indicator for any gambling, gambling by funding instrument, non-gambling expenditure, balances, and fees.
+Each control group has a distinct weakness: within-year comparisons may confound differential responsiveness to sporting events, and cross-year comparisons may confound differences in event calendars.\footnote{The 2023 window contained the Ashes and the FIFA Women's World Cup; the 2024 window contained the T20 World Cup and the UEFA European Championship.} We address this three ways. A triple-difference specification interacting year, card status, and time nets out both biases. Because transaction-account gamblers on average gamble and earn less than treated individuals, we also build a nearest-neighbour matched sample, pairing each treated individual with the control gambler closest on pre-policy gambling, expenditure, and income. And placebo tests estimate the same event studies where no policy occurred: card versus account gamblers within 2023, and account gamblers across 2023 and 2024. Both placebos are flat, and the triple-difference estimates sit on top of the baseline (Online Appendix).
+
+\section{Results} \label{Results}
+
+The raw data provide a clear preview of our main result. At the effective date, credit card–funded sports betting falls to zero, while wagering funded from transaction accounts increases. Because this substitution is only partial, total wagering among treated gamblers also declines (Figure \ref{rawdata}).
+
+\begin{figure}[H]
+    \centering
+    \caption{Raw data on the policy response}
+    \includegraphics[width=\textwidth]{Figures/f5_raw_data.pdf}
+    \label{rawdata}
+\end{figure}
+
+The policy reduced average sports gambling among treated individuals by around \$50 per fortnight (Figure \ref{DiD}, Panel 1C), a result robust to the choice of control group, the triple difference, and the matched sample. Panels 1A and 1B decompose the response by funding source: credit card gambling falls mechanically to zero, by around \$100 per fortnight, and significant substitution to transaction accounts, of around \$50 per fortnight, offsets only half of that fall.
+
+The entire fall in spending runs through participation: treated gamblers are 10 to 15 per cent less likely to wager in a given fortnight after the ban (Panel 2C), while the amount wagered conditional on gambling shows no change (Figure \ref{mechanisms}, Panel (b)).\footnote{All groups decline somewhat post-window by construction, since the sample conditions on pre-period gambling; we construct the control groups identically, so the event-study contrasts net this out. Average effects expressed in percentage changes are large, because casual gamblers with small baselines dominate the treated group (Online Appendix).} The extensive margin also shows the substitution, with the probability of gambling from a transaction account rising by roughly 10 per cent. In other words, the policy made treated accounts less likely to gamble at all rather than reducing betting amounts for those who kept gambling.
+
+Effects are also broadly consistent across the distribution, where a borrowing story says they should concentrate. Pre-ban gambling among treated accounts ranges from roughly \$10 in the lowest quartile to approximately \$1,000 per fortnight in the highest; participation falls in every quartile, with larger proportional declines among those more casually attached to the market and mechanically larger dollar declines among high spenders given their higher baselines, and the extensive margin dominates everywhere. Splits by income, liquidity, constraint status, debt, and revolving show no meaningful heterogeneity (Online Appendix). Wherever we look, the ban removed gamblers rather than shrinking gambling.
+
+\begin{figure}[H]
+    \centering
+    \caption{Event-study estimates of the policy response}
+    \includegraphics[width=\textwidth]{Figures/f6_DiD_baseline.pdf}
+    \label{DiD}
+\end{figure}
+
+Reduced gambling did not visibly reappear as other spending or saving. Non-gambling expenditure shows no rise in the month after the ban, and transaction balances show little effect whether we take their minimum, mean, or maximum. Credit card debt declines gradually over the three post-ban fortnights, by about \$500 on average and concentrated in the right tail, but the estimate is imprecise and not statistically significant. We therefore cannot conclude that the policy materially affected expenditure, savings, or debt in the short run. Mechanically, reduced gambling must translate into higher savings or other spending absent income changes, yet a \$50-per-fortnight effect is too small to generate detectable changes against normal week-to-week volatility within six weeks; longer-run accumulation of gambling savings remains possible but lies beyond our horizon. The one sharp exception is mechanical: cash-advance fees on treated accounts fall by about \$4 per fortnight, and treated gamblers become around 30 per cent less likely to incur such a fee in a given fortnight, a transfer from banks to gamblers we return to below.
+
+Nor do we find substitution into channels we cannot observe directly: in-person gambling requires cash and wallet-mediated gambling requires wallet deposits, yet neither cash withdrawals nor PayPal deposits move after the ban, and total online gambling including exempt lotteries falls in line with sports betting (Online Appendix).
+% TODO (extension): a sharper lottery test exists. Online lotteries were exempt, so
+% card-funded lottery deposits among treated individuals should be UNCHANGED at the
+% ban date. A within-person placebo validating merchant categorisation. One OA figure.
+
+
+We decompose the participation effect by splitting treated gamblers into \emph{stoppers}, who record no wagering in the six weeks after the ban, and \emph{switchers}, who continue from other accounts. Stoppers are 38 per cent of the group, and Panel (a) of Figure \ref{mechanisms} shows they drive essentially all of the participation effect: once an individual switches funding sources, their probability of gambling in a fortnight sits close to counterfactual. The policy cleaved off a group who never re-registered and barely touched everyone else. Their cessation looks real rather than incidental: 60 per cent of eventual stoppers gambled in any given fortnight before the policy, so recording nothing across the entire post-period suggests a meaningful medium-run effect at a minimum. Our six-week window cannot rule out an eventual return, a question we take up in Section \ref{Framework}. Nor can we observe which friction bound for whom: some stoppers may have lacked a debit card, others had never linked one to a wagering account, and others may have wanted to quit and treated the ban as the occasion.
+
+\begin{figure}[H]
+    \centering
+    \caption{Decomposing the response}
+    % TODO: current standalone charts dropped in as panels for now; recombine into a
+    % single properly typeset 3-panel figure before submission.
+    \begin{subfigure}{0.85\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/f9_stoppers_switchers.pdf}
+        \caption{Stoppers versus switchers}
+    \end{subfigure}\\
+    \begin{subfigure}{0.85\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/f7_EMIM_effects.pdf}
+        \caption{Extensive versus intensive margins}
+    \end{subfigure}\\
+    \begin{subfigure}{0.85\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/fB18_cash_advance_fees.pdf}
+        \caption{Cash advance fees}
+    \end{subfigure}
+    \label{mechanisms}
+\end{figure}
+
+Two pre-ban characteristics predict who stops (Table \ref{tab:stoppers}). Gamblers in higher intensity quartiles are 10 to 22 percentage points less likely to stop than the lowest quartile, and gamblers who already funded wagers from both instruments are 44 percentage points less likely to stop than those reliant on the card alone. The variables a borrowing story nominates do nothing: liquidity constraint, revolving status, balances, and debt are precisely estimated zeros once we control for intensity and funding-source use. Attachment to the activity and exposure to the switching cost predict exit; financial position does not.
+
+\begin{table}[!htbp]
+\centering
+\caption{Predictors of stopping after the ban}
+\label{tab:stoppers}
+\begin{adjustbox}{width=0.88\textwidth, center}
+\begin{threeparttable}
+\scriptsize
+\begin{tabular}{@{\extracolsep{5pt}}lccccc}
+\\[-1.8ex]\hline
+\hline \\[-1.8ex]
+ & (1) & (2) & (3) & (4) & (5) \\
+\hline \\[-1.8ex]
+\multicolumn{6}{l}{\textit{Dependent variable: Stopper (1 = no gambling in six weeks post ban)}} \\
+\hline \\[-1.8ex]
+Gambling Quartile 2  & $-$0.204$^{***}$ &  & $-$0.102$^{**}$ & $-$0.102$^{**}$ & $-$0.106$^{**}$ \\
+ & (0.036) &  & (0.034) & (0.034) & (0.034) \\[0.4em]
+Gambling Quartile 3 & $-$0.339$^{***}$ &  & $-$0.149$^{***}$ & $-$0.149$^{***}$ & $-$0.152$^{***}$ \\
+ & (0.037) &  & (0.035) & (0.035) & (0.035) \\[0.4em]
+Gambling Quartile 4 & $-$0.514$^{***}$ &  & $-$0.214$^{***}$ & $-$0.213$^{***}$ & $-$0.218$^{***}$ \\
+ & (0.037) &  & (0.038) & (0.038) & (0.038) \\[0.4em]
+Both accounts &  & $-$0.520$^{***}$ & $-$0.443$^{***}$ & $-$0.444$^{***}$ & $-$0.437$^{***}$ \\
+ &  & (0.024) & (0.027) & (0.028) & (0.028) \\[0.4em]
+Liquidity constrained &  &  &  & 0.006 &  \\
+ &  &  &  & (0.026) &  \\[0.4em]
+Revolver &  &  &  & 0.003 &  \\
+ &  &  &  & (0.024) &  \\[0.4em]
+Log(Transaction Balance) &  &  &  &  & 0.006 \\
+ &  &  &  &  & (0.007) \\[0.4em]
+Log(Credit Card Debt) &  &  &  &  & 0.003 \\
+ &  &  &  &  & (0.010) \\[0.4em]
+Constant & 0.663$^{***}$ & 0.651$^{***}$ & 0.729$^{***}$ & 0.726$^{***}$ & 0.659$^{***}$ \\
+ & (0.026) & (0.017) & (0.024) & (0.028) & (0.094) \\[0.4em]
+\hline \\[-1.8ex]
+R$^{2}$ & 0.147 & 0.281 & 0.300 & 0.300 & 0.301 \\
+\hline \\[-1.8ex]
+\end{tabular}
+\begin{tablenotes}
+\item \textbf{Notes:} Linear probability models on the treated sample. Quartiles are of pre-ban fortnightly gambling expenditure. ``Both accounts'' indicates funding wagers from both a credit card and a transaction account pre-ban. Liquidity constrained: transaction balance falls below \$100 in the pre-period. Revolver: outstanding credit card debt never falls below \$100. Column (5) adds log mean pre-ban transaction balance and log mean credit card debt. Standard errors in parentheses. $^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01.
+\end{tablenotes}
+\end{threeparttable}
+\end{adjustbox}
+\end{table}
+
+The policy also never truly constrained the liquidity of card gamblers, because a simple workaround exists: transfer funds from the credit card to a transaction account, then deposit from there. This route incurs the same cash-advance fee that card gambling attracted before the ban, so a gambler who genuinely depended on card credit could have preserved their liquidity at essentially unchanged financial cost, and cash-advance fees should have remained steady after the policy. Instead they fall by roughly \$4 per fortnight among treated gamblers (Figure \ref{mechanisms}, Panel (c)): treated gamblers abandoned the credit channel rather than rerouting it. Financial outcomes agree. Stoppers and switchers show no differential movement in credit card debt or balances after the ban; only among top-quartile stoppers is there a suggestive decline in debt and rise in balances, imprecisely estimated on a small group, which is where any genuine constraint effect would live if one exists.
+
+\section{A Simple Framework} \label{Framework}
+
+Consider a gambler $i$ who each fortnight receives flow value $v_i > 0$ from wagering and deposits funds using an instrument $m \in \{C, T\}$, a credit card or a transaction account. The card attracts the cash-advance fee $f$ but yields a convenience benefit $c_i \geq 0$ relative to the account: budgeting on a single instrument, points programs, concealing activity from a shared account, or habit. Flow utility from gambling is
+\begin{equation}
+    u_{im} = v_i + \mathbb{1}[m = C]\,(c_i - f).
+\end{equation}
+Pre-ban, gamblers with $c_i \geq f$ use the card. Revealed preference dissolves the pre-ban puzzle: financially secure gamblers paying avoidable fees are buying convenience worth at least $f$.\\
+
+The ban removes $C$. A card gambler who wants to continue must adopt $T$, paying a one-off switching cost $k_i \geq 0$: activating a debit card, linking it to a wagering account, reorganising financial routines. For gamblers already funding wagers from both instruments, $k_i \approx 0$. With discount factor $\delta$, gambler $i$ continues if and only if
+\begin{equation} \label{eq:exit}
+    \frac{v_i}{1-\delta} \geq k_i,
+\end{equation}
+and stops otherwise. Call this the friction model. The policy's own rationale is instead a constraint model: desired gambling is $g_i^*$ but feasible gambling is $\min(g_i^*, a_i + L_i)$ for liquid assets $a_i$ and credit line $L_i$, and the ban deletes $L_i$.\\
+
+The two models disagree on every margin we observe, and each disagreement resolves against the constraint model. It predicts intensive-margin compression among those with $g_i^* > a_i$; the response was purely extensive (Section \ref{Results}). It predicts responses concentrated among the illiquid and revolvers; the response was uniform, and stopping orthogonal to every financial variable (Sections \ref{Results} and \ref{Mechanisms}). It predicts constrained gamblers preserve liquidity through the fee-equivalent transfer workaround; cash-advance activity collapsed instead. It predicts continuers deleverage once the credit line closes; their balance sheets did not move. And it requires borrowers in the treated population to begin with; there were few (Section \ref{Incidence}). The friction model in equation (\ref{eq:exit}) delivers each observation: exit falls with $v_i$, proxied by baseline intensity, and rises with $k_i$, proxied by single-instrument reliance, exactly the two coefficients that survive in Table \ref{tab:stoppers}; continuers are untouched because neither $v_i$ nor any budget has changed; and nobody buys back a credit line they never valued as credit.
+
+Three general implications follow from taking equation (\ref{eq:exit}) seriously as the mechanics of friction policy.
+
+First, frictions are cheap and potent on the participation margin. The friction here was worth a few dollars a fortnight, the avoided fee plus one afternoon of account administration, and it removed a tenth of experienced consumers of an addictive good from the market. It is difficult to think of a price instrument that moves participation that much for that little. For regulators whose objective sits on the extensive margin, deterring entry, slowing the pipeline from casual to habitual use, or thinning participation in an immature market, frictions look like a bargain, and our estimates come from a mature market where attachment should be at its strongest. Precedent points the same way: when Australian states banned smoking inside gaming venues, poker machine expenditure fell, another case of a small inconvenience moving gambling behaviour \citep{productivity2010gambling}.
+
+Second, a friction's incidence is self-selecting, and for temptation goods it self-selects away from harm. Equation (\ref{eq:exit}) is a screen: it removes gamblers with low $v_i$ and retains those with high $v_i$. Gambling harm concentrates in high $v_i$: the intensive users. This is targeting by ordeal running in reverse. Ordeals can improve the targeting of transfers because willingness to endure them rises with need, so the queue screens in the deserving \citep{NicholsZeckhauser1982, AlatasEtAl2016_SelfTargeting}, though even there the neediest can be screened out \citep{DeshpandeLi2019_ScreenedOut}. For a sin good, willingness to endure rises with devotion, and devotion is the harm. The continuation value of a heavy user dwarfs any feasible one-off hurdle $k$, so friction policy has a built-in ceiling: it trims the casual tail and cannot reach the core; the median treated account in our data wagered only \$14 a week. Our setting adds a second, compositional layer. Who held the banned technology determined who faced the friction at all, and in a screened market the financially healthy disproportionately hold credit cards. Had card gamblers been the illiquid borrowers of the policy narrative, a card ban would have been well targeted, removing credit exactly where gambling meets illiquidity. Because card holding instead proxied financial security, the policy's bite landed on the segment of the market least likely to be harmed, twice over.
+
+Third, the design margin for friction policy is not the size of the hurdle but where in the usage distribution it recurs. A one-off access cost like this one screens on attachment and is paid once, which also implies the effect may erode as stoppers eventually re-register; the effect is stable over the 12 weeks our data allow, but persistence beyond that is open. Recurring frictions that scale with intensity, deposit limits, per-deposit verification, mandatory breaks, tax the attached rather than the marginal, and should have the opposite incidence. That comparison, between classes of friction, is where the policy design question now sits.
+% TODO (extensions): two cheap additions strengthen this section if space allows on
+% revision. (1) Announcement-window event study: friction model predicts no anticipatory
+% switching between Dec 2023 announcement and June 2024 implementation. (2) Restart
+% hazard among stoppers over the 12-week window, putting a number on early persistence.
+
+Treated gamblers now save roughly \$4 a fortnight in cash-advance fees they previously paid voluntarily. In the model those payments reveal convenience value $c_i \geq f$, so the saving is bounded by a lost benefit and we do not book it as a welfare gain. It is better read as the price this group had been paying to keep their finances on one instrument, and as a measure of how little the policy had to outweigh to move behaviour.
+
+\section{Conclusion} \label{Conclusion}
+
+Payment restrictions have become the fashionable instrument of gambling regulation across the UK, the US, and Australia, justified as a curb on betting with borrowed money. Our evidence, from the first transaction-level evaluation of such a policy, is that the justification and the mechanism have little to do with one another. Credit card gamblers were financially secure consumers paying for convenience; removing their instrument imposed a small one-off friction; and that friction removed roughly a third of them, the most casual and the most reliant on a single payment rail, while the intensive core of the market switched instruments within a fortnight and carried on.
+
+Read narrowly, this is an evaluation of one ban: effective at reducing participation, mistargeted relative to its stated aim, and modest in welfare terms either way. Read generally, it is evidence on how friction-based regulation of temptation goods works. Frictions move participation at trivial fiscal and political cost, which makes them genuinely valuable where the policy objective lives on the extensive margin, in immature markets or at the point of entry. But consumers set a friction's incidence when they decide whether to step around it, and for goods where attachment and harm travel together, that selection systematically spares the users policy is aimed at. Reaching them requires instruments that bind harder with intensity of use, not higher hurdles at the door.
+
+\newpage
+\bibliographystyle{apalike}
+\bibliography{references}
+
+\newpage
+\appendix 
+\section{Comments}
+Important to try and really hone in on what this paper is about/ what the economics are. 
+\begin{itemize}
+    \item Natural structure of paper: X is important. We study X / bring some causal evidence to some aspect of X, using the policy change as an experiment.
+    \item What is our X?
+        \begin{itemize}
+            \item Most narrow - Australian 2024 policy change.
+            \item Most general - Frictions as a policy tool for deterring use/consumption of sin goods.
+            \item In between - Payment mechanism restrictions in gambling, Payment mechanism restrictions in sin goods. 
+        \end{itemize}
+    \item Trade-off between 'why should I care' (EV) and 'do I believe this'? (IV)
+    \item I'm not convinced we can use our evidence to speak to general frictions in general sin good markets. 
+    \item To me the policy change we study is about payment mechanism restrictions on behaviour in gambling markets. To get to frictions in sin markets there are two jumps:
+        \begin{itemize}
+            \item Are payment mechanism restrictions generalizable to other frictions? (Both in effect and also in policy goals)
+            \item Are gambling markets generalisable to other sin good markets. 
+        \end{itemize}
+    \item My sense is that if we have to choose, it's better to generalise away from gambling.
+\end{itemize}
+
+What if this paper is about  the effects of payment mechanism restrictions (specifically) on behavior in sin goods markets?
+\begin{itemize}
+    \item There has been an explosion in the ability of consumers to source credit, and the forms of consumptions towards which they can apply it. 
+    \item Policy-makers (and the public) worry about the use of these forms of credit in markets for sin goods where consumers face temptation/self-control style problems. 
+    \item Increasingly governments are turning towards restrictions on payment mechanisms in these markets. But we have limited evidence on how these restrictions operate?
+    \item This paper studies the incidence and effects of these types of policies, using the Australian 2024 policy change. 
+    \item We identify three lessons (?) from the Australian policy change:
+        \begin{enumerate}
+            \item In practice, payment mechanism restrictions are difficult to implement due to the inherent fungibility of money. This means that these policies often add frictions to the use of credit, rather than cut-off the mechanism completely. In turn, the incidence of these frictions on behaviour are shaped by two things: 
+            \item Interaction with private credit markets. On average population of people using credit in these markets are different to broader population in these markets. ('extensive-margin')
+            \item Self-selection - how the friction shapes the effected population depends on selection. 
+        \end{enumerate}
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+% ============================================================
+% ONLINE APPENDIX (separate file at submission; outline)
+% A. Data details: provider process, merchant verification, wallet treatment.
+% B. Representativeness: card-market benchmarking (current A.2), HILDA ownership,
+%    international problem gambling comparison (current B.1).
+% C. Identification: both placebo event studies, triple-difference, matched
+%    estimates, summary statistics table [TODO: former "Table XXX", still to be made].
+% D. Robustness: window lengths (A.19), weekly frequency, percentage changes
+%    (A.4, A.6), total online gambling (A.3), cash withdrawals and PayPal (A.5).
+% E. Heterogeneity: quartiles (Fig 8, A.7), income (A.8), liquidity (A.9-A.11),
+%    debt (A.12), revolver (A.13).
+% F. Mechanisms detail: stopper-switcher event studies (A.14, A.15), non-gambling
+%    expenditure and balances (A.17, A.18).
+% G. [Proposed new] Announcement-window event study; lottery within-person placebo;
+%    stopper restart hazard.
+% ============================================================
+
+\end{document}
